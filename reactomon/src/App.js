@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/layout/Header'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Pokemons from './components/Pokemons'
+import PokemonDetails from './components/PokemonDetails'
 import axios from 'axios';
 
 class App extends Component{
@@ -23,9 +24,13 @@ render() {
       {/* <Route exact path="/" />
 
       <Route path ="/pokemons" component={Pokemons}/> */}
+      <Route path="/pokemons">
       <div style={containerStyle}>
         <Pokemons pokemons={this.state.pokemons} />
       </div>
+      </Route>
+
+      <Route path="/pokemon/:id" component={PokemonDetails}/>
       
     </div>
     </Router>

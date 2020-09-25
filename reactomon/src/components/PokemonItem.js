@@ -13,12 +13,18 @@ componentDidMount(){
     .then(res => this.setState({id: res.data.id}))
   }
 
-// todo : send url as props to details page
+// todo : check how can we pass data through Link
 
     render() {
         return (
             <div style={pokemonCard} >
-                <Link to={`pokemon/${this.state.id}`}> 
+                <Link to={
+                    {
+                        pathname: `pokemon/${this.state.id}`,
+                        state: {
+                            id: "hello"
+                        }
+                    }}> 
                     <p onClick={ () => console.log(this.state.id)}>{this.props.pokemon.name}</p>
                 </Link>
             </div>

@@ -1,28 +1,24 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-export class PokemonDetails extends Component {
+const PokemonDetails = props => {
 
-    state = {
-        details:[]
-    }
+    const [details, setState] = useState([])
 
-   componentDidMount () {
-       const { id } = this.props.match.params
-       axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-        .then(res => this.setState({details: res.data}))
-   }
-
+    useEffect (() => {
+        console.log("Pokemon details useEffect")
+        const { id } = props.match.params
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+        .then(res => setState(res.data))
+    }, [props.match.params])
     
-    render() {
-        return (
-            <div>
-                <h1>Name: {this.state.details.name}</h1>
-                <h3>Weight: {this.state.details.weight}</h3>
-                <h3>Base xp: {this.state.details.base_experience}</h3>
-            </div>
-        )
-    }
+    return (
+        <div>
+            <h1>Name: {details.name}</h1>
+            <h3>Weight: {details.weight}</h3>
+            <h3>Base xp: {details.base_experience}</h3>
+        </div>
+    )
 }
 
 export default PokemonDetails

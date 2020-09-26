@@ -1,38 +1,33 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 
-export class PokemonItem extends Component {
+const PokemonItem = props => {
 
-state ={
-    id: null
-}
+const [id, setState] = useState(null)
 
-componentDidMount(){
-    axios.get(this.props.pokemon.url)
-    .then(res => this.setState({id: res.data.id}))
-  }
+useEffect (() => {
+    console.log("Pokemon item Axios call")
+    axios.get(props.pokemon.url)
+    .then(res => setState(res.data.id))
+},[props.pokemon.url])
 
 // todo : check how can we pass data through Link
 
-    render() {
         return (
             <div style={pokemonCard} >
                 <Link to={
                     {
-                        pathname: `pokemon/${this.state.id}`,
+                        pathname: `pokemon/${id}`,
                         state: {
                             id: "hello"
                         }
                     }}> 
-                    <p onClick={ () => console.log(this.state.id)}>{this.props.pokemon.name}</p>
+                    <p onClick={ () => console.log(id)}>{props.pokemon.name}</p>
                 </Link>
             </div>
         )
     }
-}
-
-
 
 const pokemonCard = {
     height: "100px",

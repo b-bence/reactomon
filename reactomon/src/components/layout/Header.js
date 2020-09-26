@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import Background from '../../images/header-picture.png'
 
-export class Header extends Component {
-    render() {
+const Header = props => {
         return (
             <header style={headerStyle}>
                 <div style={linkDivStyle}>
@@ -18,7 +17,6 @@ export class Header extends Component {
             </header>
         )
     }
-}
 
 const headerStyle={
     position: 'relative',

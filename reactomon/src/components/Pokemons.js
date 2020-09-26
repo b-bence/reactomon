@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PokemonItem from './PokemonItem'
 
-export class Pokemons extends Component {
-    render() {
-            return this.props.pokemons.map((pokemon) =>(
+const Pokemons = props => {
+            return props.pokemons.map((pokemon) =>(
             <PokemonItem pokemon={pokemon}/>
             ));
     }
-}
 
 export default Pokemons

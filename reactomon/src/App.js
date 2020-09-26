@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/layout/Header'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Pokemons from './components/Pokemons'
 import PokemonDetails from './components/PokemonDetails'
 import axios from 'axios';
 
-class App extends Component{
-state = {
-  pokemons: [
-  ]
-}
-componentDidMount(){
-  axios.get("https://pokeapi.co/api/v2/pokemon")
-  .then(res => this.setState({pokemons: res.data.results}))
-}
+const App = props => {
+  const [pokemons, setState]= useState([])
 
-render() {
-  return (
+  useEffect (() => {
+    console.log("Axios call")
+    axios.get("https://pokeapi.co/api/v2/pokemon")
+    .then(res => setState(res.data.results))
+  },[])
+
+
+return (
     <Router>
     <div className="App">
       <Header />
@@ -26,7 +25,7 @@ render() {
       <Route path ="/pokemons" component={Pokemons}/> */}
       <Route path="/pokemons">
       <div style={containerStyle}>
-        <Pokemons pokemons={this.state.pokemons} />
+        <Pokemons pokemons={pokemons} />
       </div>
       </Route>
 
@@ -34,9 +33,7 @@ render() {
       
     </div>
     </Router>
-  );
-}
-}
+  );}
 
 const containerStyle={
     display: "inline-flex",

@@ -11,7 +11,7 @@ const Header = props => {
                     </button>
                     | | | 
                     <button style={linkButtonStyle}>
-                    <Link style={linkStyle}>Types</Link>
+                    <Link style={linkStyle} to="/types">Types</Link>
                     </button>
                 </div>
             </header>

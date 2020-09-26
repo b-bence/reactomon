@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Pokemons from './components/Pokemons'
 import PokemonDetails from './components/PokemonDetails'
 import axios from 'axios';
+import TypeList from './components/TypeList';
 
 const App = props => {
   const [pokemons, setState]= useState([])
@@ -30,6 +31,7 @@ return (
       </Route>
 
       <Route path="/pokemon/:id" component={PokemonDetails}/>
+      <Route path= "/types" component={TypeList} />
       
     </div>
     </Router>

@@ -13,14 +13,12 @@ const HeaderElement = styled.header`
     color: #fff;
     text-align: center;
     padding: 10px;
-
 `
 
 const Div = styled.div`
     position: absolute;
     bottom: 0;
     left: 45%;
-
 `
 
 const NavLink = styled(Link)`
@@ -29,9 +27,11 @@ const NavLink = styled(Link)`
     text-decoration: none;
 `
 
-const Header = props => {
+const Header = ({theme}) => {
         return (
-            <HeaderElement>
+            <HeaderElement style = {{
+                backgroundColor: `${theme}`
+             }}>
                 <Div>
                     <Button>
                     <NavLink to="/pokemons">Pokemons</NavLink>
@@ -44,5 +44,7 @@ const Header = props => {
             </HeaderElement>
         )
     }
+
+    
 
 export default Header

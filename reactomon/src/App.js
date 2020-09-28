@@ -5,7 +5,9 @@ import Pokemons from './components/Pokemons'
 import PokemonDetails from './components/PokemonDetails'
 import axios from 'axios';
 import TypeList from './components/TypeList';
-import ReactDOM from "react-dom";
+import ThemeContext, {themes} from './components/ThemeContext'
+import ContainerDiv from './elements/ContainerDiv'
+
 
 const App = props => {
   const [pokemons, setState]= useState([])
@@ -16,26 +18,26 @@ const App = props => {
     .then(res => setState(res.data.results))
   },[])
 
-  const [theme, setTheme] = React.useState("white");
+  const [theme, setTheme] = useState(themes.light);
 
   const onClickHandler = () => {
-    setTheme( theme === "white"? "grey": "white");
+    setTheme( theme === themes.light? themes.dark: themes.light);
     }
 
 
 return (
+  <ThemeContext.Provider value={theme}>
     <Router>
-    <div className="App">
-      <Header theme={theme}/>
-      <button onClick = {onClickHandler}>Change theme</button>
-      {/* <Route exact path="/" />
-
-      <Route path ="/pokemons" component={Pokemons}/> */}
+    <div className="App" style={theme}>
+      
+      <Header/>
+      
+      <button style = {theme} onClick = {onClickHandler}>Change theme</button>
 
       <Route path="/pokemons">
-        <div style={containerStyle}>
+        <ContainerDiv style={theme}>
           <Pokemons pokemons={pokemons} />
-        </div>
+        </ContainerDiv>
       </Route>
 
       <Route path="/pokemon/:id" component={PokemonDetails}/>
@@ -44,14 +46,8 @@ return (
       
     </div>
     </Router>
+    </ThemeContext.Provider>
   );}
-
-const containerStyle={
-    display: "inline-flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    alignItems: "center"
-}
 
 
 export default App;

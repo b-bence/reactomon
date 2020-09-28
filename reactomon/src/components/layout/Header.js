@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useContext}from 'react'
 import {Link} from 'react-router-dom'
 import Background from '../../images/header-picture.png'
 import styled from 'styled-components'
 import Button from '../../elements/Button'
+import ThemeContext from '../ThemeContext'
 
 const HeaderElement = styled.header`
     position: relative;
@@ -27,11 +28,10 @@ const NavLink = styled(Link)`
     text-decoration: none;
 `
 
-const Header = ({theme}) => {
+const Header = () => {
+    const theme = useContext(ThemeContext);
         return (
-            <HeaderElement style = {{
-                backgroundColor: `${theme}`
-             }}>
+            <HeaderElement style={theme}>
                 <Div>
                     <Button>
                     <NavLink to="/pokemons">Pokemons</NavLink>

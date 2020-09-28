@@ -1,9 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
+import ThemeContext from './ThemeContext'
+import styled from 'styled-components'
+
+
+const PokemonCard = styled.div`
+    height: 100px;
+    width: 150px;
+    background-color: #4f8a8b;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+`
 
 const PokemonItem = props => {
 
+const theme = useContext(ThemeContext);
 const [id, setState] = useState(null)
 
 useEffect (() => {
@@ -13,10 +29,9 @@ useEffect (() => {
 },[props.pokemon.url])
 
 // todo : check how can we pass data through Link
-
         return (
-            <div style={pokemonCard} >
-                <Link to={
+            <PokemonCard>
+                <Link style={linkStyle} to={
                     {
                         pathname: `pokemon/${id}`,
                         state: {
@@ -25,23 +40,14 @@ useEffect (() => {
                     }}> 
                     <p onClick={ () => console.log(id)}>{props.pokemon.name}</p>
                 </Link>
-            </div>
+            </PokemonCard>
         )
     }
 
-const pokemonCard = {
-    height: "100px",
-    width: "150px",
-    backgroundColor: "#ffcb02",
-    borderRadius: "20px",
-    borderColor: "#2d72b8",
-    borderWidth: "4px",
-    borderStyle: "solid",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    margin: "15px"
+const linkStyle={
+    color: "#fbd46d",
+    textDecoration: "none",
+    fontWeight: "bolder",
 }
 
 export default PokemonItem

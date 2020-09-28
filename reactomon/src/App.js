@@ -7,6 +7,8 @@ import axios from 'axios';
 import TypeList from './components/TypeList';
 import ThemeContext, {themes} from './components/ThemeContext'
 import ContainerDiv from './elements/ContainerDiv'
+import {CatchList} from './components/CatchContext'
+import Catched from './components/Catched'
 
 
 const App = props => {
@@ -27,13 +29,14 @@ const App = props => {
 
 return (
   <ThemeContext.Provider value={theme}>
+    <CatchList>
     <Router>
     <div className="App" style={theme}>
       
       <Header/>
       
       <button style = {theme} onClick = {onClickHandler}>Change theme</button>
-
+      
       <Route path="/pokemons">
         <ContainerDiv style={theme}>
           <Pokemons pokemons={pokemons} />
@@ -41,11 +44,14 @@ return (
       </Route>
 
       <Route path="/pokemon/:id" component={PokemonDetails}/>
-
+      
       <Route path= "/types" component={TypeList} />
+
+      <Route path="/catched" component={Catched} />
       
     </div>
     </Router>
+    </CatchList> 
     </ThemeContext.Provider>
   );}
 

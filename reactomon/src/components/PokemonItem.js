@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios';
 import ThemeContext from './ThemeContext'
 import styled from 'styled-components'
+import CatchPokemon from './CatchPokemon'
 
 
 const PokemonCard = styled.div`
@@ -40,6 +41,7 @@ useEffect (() => {
                     }}> 
                     <p onClick={ () => console.log(id)}>{props.pokemon.name}</p>
                 </Link>
+                <CatchPokemon name={props.pokemon.name}/>
             </PokemonCard>
         )
     }

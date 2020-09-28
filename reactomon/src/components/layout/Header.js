@@ -40,6 +40,10 @@ const Header = () => {
                     <Button>
                     <NavLink to="/types">Types</NavLink>
                     </Button>
+                    | | | 
+                    <Button>
+                    <NavLink to="/catched">Catched</NavLink>
+                    </Button>
                 </Div>
             </HeaderElement>
         )

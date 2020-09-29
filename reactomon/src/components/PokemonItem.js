@@ -7,7 +7,7 @@ import CatchPokemon from './CatchPokemon'
 
 
 const PokemonCard = styled.div`
-    height: 100px;
+    height: 200px;
     width: 150px;
     background-color: #4f8a8b;
     border-radius: 20px;
@@ -32,6 +32,7 @@ useEffect (() => {
 // todo : check how can we pass data through Link
         return (
             <PokemonCard>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png`} alt="new"></img>
                 <Link style={linkStyle} to={
                     {
                         pathname: `pokemon/${id}`,

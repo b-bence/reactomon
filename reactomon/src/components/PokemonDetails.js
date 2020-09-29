@@ -14,6 +14,7 @@ const PokemonDetails = props => {
     
     return (
         <div>
+            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${details.id}.png`} alt="new"></img>
             <h1>Name: {details.name}</h1>
             <h3>Weight: {details.weight}</h3>
             <h3>Base xp: {details.base_experience}</h3>

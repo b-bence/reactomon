@@ -8,8 +8,7 @@ import TypeList from './components/TypeList';
 import ThemeContext, {themes} from './components/ThemeContext'
 import ContainerDiv from './elements/ContainerDiv'
 import {CatchList} from './components/CatchContext'
-import Catched from './components/Catched'
-import "./Body.css"
+import CatchedDiv from './components/CatchedDiv'
 
 const App = props => {
   const [pokemons, setState]= useState([])
@@ -48,7 +47,10 @@ return (
       
       <Route path= "/types" component={TypeList} />
 
-      <Route path="/catched" component={Catched} />
+      <Route path="/catched" component={CatchedDiv}/>
+
+
+  
       
     </div>
     </Router>

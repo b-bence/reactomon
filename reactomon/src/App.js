@@ -9,7 +9,7 @@ import ThemeContext, {themes} from './components/ThemeContext'
 import ContainerDiv from './elements/ContainerDiv'
 import {CatchList} from './components/CatchContext'
 import Catched from './components/Catched'
-
+import "./Body.css"
 
 const App = props => {
   const [pokemons, setState]= useState([])
@@ -38,6 +38,7 @@ return (
       <button style = {theme} onClick = {onClickHandler}>Change theme</button>
       
       <Route path="/pokemons">
+
         <ContainerDiv style={theme}>
           <Pokemons pokemons={pokemons} />
         </ContainerDiv>

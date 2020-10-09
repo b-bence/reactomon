@@ -1,20 +1,30 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {CatchContext} from './CatchContext'
 
-const CatchPokemon = props => {
-    const [name, setName] = useState('');
+const CatchPokemon = (props) => {
     const [pokemons, catchNewPokemon] = useContext(CatchContext)
 
-    const [clickable, setClickable] = useState(false);
+    const [clickable, setUnClickable] = useState(false);
 
     const addPokemon = () => {
-        setName(props.name)
-        setClickable(true)
+        
+        setUnClickable(true)   
         catchNewPokemon(prevPokemons => [...prevPokemons, {pokemonName: props.name}])
     }
 
+    useEffect (() =>{
+        for (let i = 0; i < pokemons.length; i++){
+            if (pokemons[i].pokemonName === props.name){
+                console.log('called')
+                setUnClickable(true)
+            }
+        }
+    })
+
     return (
+        <div>
         <button disabled={clickable} style={catchButtonStyle} onClick={addPokemon}>Catch!</button>
+        </div>
     )
 }
 

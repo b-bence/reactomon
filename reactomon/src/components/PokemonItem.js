@@ -23,7 +23,9 @@ const PokemonItem = props => {
 const theme = useContext(ThemeContext);
 const [id, setState] = useState(null)
 
+
 useEffect (() => {
+
     console.log("Pokemon item Axios call")
     axios.get(props.pokemon.url)
     .then(res => setState(res.data.id))

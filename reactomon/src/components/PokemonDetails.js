@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import CatchPokemon from './CatchPokemon'
 
 const PokemonDetails = props => {
 
@@ -18,6 +19,7 @@ const PokemonDetails = props => {
             <h1>Name: {details.name}</h1>
             <h3>Weight: {details.weight}</h3>
             <h3>Base xp: {details.base_experience}</h3>
+            <CatchPokemon name={details.name}/>
         </div>
     )
 }

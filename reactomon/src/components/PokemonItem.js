@@ -48,7 +48,6 @@ useEffect (() => {
             </PokemonCard>
         )
     }
-
 const linkStyle={
     color: "#fbd46d",
     textDecoration: "none",

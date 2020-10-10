@@ -44,8 +44,10 @@ return (
       </Route>
 
       <Route path="/pokemon/:id" component={PokemonDetails}/>
-      
-      <Route path= "/types" component={TypeList} />
+
+      {/* Not using this route to display any useful information. Only listing the types and without
+      a good design idea or useful implementation it just looks messy */}
+      {/* <Route path= "/types" component={TypeList} /> */}
 
       <Route path="/catched" component={CatchedDiv}/>
 

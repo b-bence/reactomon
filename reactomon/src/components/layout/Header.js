@@ -37,9 +37,9 @@ const Header = () => {
                     <NavLink to="/pokemons">Pokemons</NavLink>
                     </Button>
                     | | | 
-                    <Button>
+                    {/* <Button>
                     <NavLink to="/types">Types</NavLink>
-                    </Button>
+                    </Button> */}
                     | | | 
                     <Button>
                     <NavLink to="/catched">Catched</NavLink>

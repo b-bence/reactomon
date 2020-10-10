@@ -9,6 +9,7 @@ import ThemeContext, {themes} from './components/ThemeContext'
 import ContainerDiv from './elements/ContainerDiv'
 import {CatchList} from './components/CatchContext'
 import CatchedDiv from './components/CatchedDiv'
+import './App.css'
 
 const App = props => {
   const [pokemons, setState]= useState([])
@@ -43,15 +44,29 @@ return (
         </ContainerDiv>
       </Route>
 
+
+      {/* <Route path="/pokemon/:id">
+        <ContainerDiv style={theme}>
+          <PokemonDetails></PokemonDetails>
+        </ContainerDiv>
+      </Route> */}
+
+      <ContainerDiv>
       <Route path="/pokemon/:id" component={PokemonDetails}/>
+      </ContainerDiv>
 
       {/* Not using this route to display any useful information. Only listing the types and without
       a good design idea or useful implementation it just looks messy */}
       {/* <Route path= "/types" component={TypeList} /> */}
 
-      <Route path="/catched" component={CatchedDiv}/>
+      {/* <Route path="/catched" component={CatchedDiv}/> */}
 
+      <Route path="/catched">
+        <ContainerDiv style={theme}>
+          <CatchedDiv></CatchedDiv>
+        </ContainerDiv>
 
+      </Route>
   
       
     </div>

@@ -14,7 +14,7 @@ const CatchedDiv = () =>{
 
     return (
             <div className={currentClass} onClick={toggleClass}>
-                <img width="200" height="200" src="https://lh3.googleusercontent.com/proxy/G7Rq1CU5vIC-5S5Glh3keO0gfbJXw4kFVRPxyRo2nRd3PfwFEgJ7RbgECKiQsVdrFzQSQ_ewU6G_VWI82X0Zs0u-5ccs_6tqZWgrZxlqUXYuLtg" alt="new"></img>
+                <img width="200" height="200" src="https://i.pinimg.com/originals/50/e1/db/50e1db4684e6f697f93590950eb832f6.png" alt="new"></img>
                     <div className="text1">
                         <div className="text-content">
                             <h1 className="title">Catched'em</h1>

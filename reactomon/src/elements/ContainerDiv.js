@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 
 export default styled.div`
-  display: inline-flex;
+
+  width: 80%;
+  margin: 0 auto; 
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;

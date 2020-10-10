@@ -5,6 +5,10 @@ import Pokemons from './components/Pokemons'
 import PokemonDetails from './components/PokemonDetails'
 import axios from 'axios';
 import TypeList from './components/TypeList';
+import ThemeContext, {themes} from './components/ThemeContext'
+import ContainerDiv from './elements/ContainerDiv'
+import {CatchList} from './components/CatchContext'
+import CatchedDiv from './components/CatchedDiv'
 
 const App = props => {
   const [pokemons, setState]= useState([])
@@ -15,34 +19,46 @@ const App = props => {
     .then(res => setState(res.data.results))
   },[])
 
+  const [theme, setTheme] = useState(themes.light);
+
+  const onClickHandler = () => {
+    setTheme( theme === themes.light? themes.dark: themes.light);
+    }
+
 
 return (
+  <ThemeContext.Provider value={theme}>
+    <CatchList>
     <Router>
-    <div className="App">
-      <Header />
-
-      {/* <Route exact path="/" />
-
-      <Route path ="/pokemons" component={Pokemons}/> */}
+    <div className="App" style={theme}>
+      
+      <Header/>
+      
+      <button style = {theme} onClick = {onClickHandler}>Change theme</button>
+      
       <Route path="/pokemons">
-      <div style={containerStyle}>
-        <Pokemons pokemons={pokemons} />
-      </div>
+
+        <ContainerDiv style={theme}>
+          <Pokemons pokemons={pokemons} />
+        </ContainerDiv>
       </Route>
 
       <Route path="/pokemon/:id" component={PokemonDetails}/>
-      <Route path= "/types" component={TypeList} />
+
+      {/* Not using this route to display any useful information. Only listing the types and without
+      a good design idea or useful implementation it just looks messy */}
+      {/* <Route path= "/types" component={TypeList} /> */}
+
+      <Route path="/catched" component={CatchedDiv}/>
+
+
+  
       
     </div>
     </Router>
+    </CatchList> 
+    </ThemeContext.Provider>
   );}
-
-const containerStyle={
-    display: "inline-flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    alignItems: "center"
-}
 
 
 export default App;

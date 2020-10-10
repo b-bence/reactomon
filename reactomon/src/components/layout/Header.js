@@ -1,51 +1,54 @@
-import React from 'react'
+import React, {useContext}from 'react'
 import {Link} from 'react-router-dom'
 import Background from '../../images/header-picture.png'
+import styled from 'styled-components'
+import Button from '../../elements/Button'
+import ThemeContext from '../ThemeContext'
 
-const Header = props => {
+const HeaderElement = styled.header`
+    position: relative;
+    height: 180px;
+    background-image: url(${Background});
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+`
+
+const Div = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 45%;
+`
+
+const NavLink = styled(Link)`
+    color: #ffcb02;
+    font-weight: bold;
+    text-decoration: none;
+`
+
+const Header = () => {
+    const theme = useContext(ThemeContext);
         return (
-            <header style={headerStyle}>
-                <div style={linkDivStyle}>
-                    <button style={linkButtonStyle}>
-                    <Link style={linkStyle} to="/pokemons">Pokemons</Link>
-                    </button>
+            <HeaderElement style={theme}>
+                <Div>
+                    <Button>
+                    <NavLink to="/pokemons">Pokemons</NavLink>
+                    </Button>
                     | | | 
-                    <button style={linkButtonStyle}>
-                    <Link style={linkStyle} to="/types">Types</Link>
-                    </button>
-                </div>
-            </header>
+                    {/* <Button>
+                    <NavLink to="/types">Types</NavLink>
+                    </Button> */}
+                    | | | 
+                    <Button>
+                    <NavLink to="/catched">Catched</NavLink>
+                    </Button>
+                </Div>
+            </HeaderElement>
         )
     }
 
-const headerStyle={
-    position: 'relative',
-    height: '180px',
-    backgroundImage: `url(${Background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: "center",
-    color: '#fff',
-    textAlign: 'center',
-    padding: '10px'
-}
-
-const linkStyle = {
-    color: "#ffcb02",
-    fontWeight: "bold",
-    textDecoration: "none"
-}
-
-const linkDivStyle={
-    position: "absolute",
-    bottom: '0',
-    left: '45%'
-}
-
-const linkButtonStyle={
-    height: "30px",
-    background: '#2d72b8',
-    borderRadius: "10px",
-    borderColor: "white"
-}
+    
 
 export default Header

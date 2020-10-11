@@ -4,12 +4,11 @@ import axios from 'axios';
 import ThemeContext from './ThemeContext'
 import styled from 'styled-components'
 import CatchPokemon from './CatchPokemon'
-
+import { ThemeProvider } from 'styled-components';
 
 const PokemonCard = styled.div`
     height: 200px;
-    width: 150px;
-    background-color: #4f8a8b;
+    width: 200px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -18,10 +17,21 @@ const PokemonCard = styled.div`
     margin: 15px;
 `
 
-const PokemonItem = props => {
+const PokemonItem = (props) => {
 
-const theme = useContext(ThemeContext);
 const [id, setState] = useState(null)
+
+const cardStyle = {
+    backgroundColor: `${props.theme === 'light' ? '#ffcb02': "#4a576b"}`,
+    
+}
+
+const linkStyle={
+    color: "#dfe3e9",
+    textDecoration: "none",
+    fontWeight: "bolder",
+    color: `${props.theme === 'light' ? '#222831': "#dfe3e9"}`
+}
 
 
 useEffect (() => {
@@ -33,7 +43,7 @@ useEffect (() => {
 
 // todo : check how can we pass data through Link
         return (
-            <PokemonCard>
+            <PokemonCard style={cardStyle}>
                 <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png`} alt="new"></img>
                 <Link style={linkStyle} to={
                     {
@@ -48,10 +58,6 @@ useEffect (() => {
             </PokemonCard>
         )
     }
-const linkStyle={
-    color: "#fbd46d",
-    textDecoration: "none",
-    fontWeight: "bolder",
-}
+
 
 export default PokemonItem

@@ -9,6 +9,11 @@ import ThemeContext, {themes} from './components/ThemeContext'
 import ContainerDiv from './elements/ContainerDiv'
 import {CatchList} from './components/CatchContext'
 import CatchedDiv from './components/CatchedDiv'
+import './App.css'
+import { lightTheme, darkTheme } from './components/Theme';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './components/Global';
+import Toggle from './components/Toggle'
 
 const App = props => {
   const [pokemons, setState]= useState([])
@@ -19,45 +24,67 @@ const App = props => {
     .then(res => setState(res.data.results))
   },[])
 
-  const [theme, setTheme] = useState(themes.light);
+  const [theme, setTheme] = useState('dark');
 
   const onClickHandler = () => {
-    setTheme( theme === themes.light? themes.dark: themes.light);
+    setTheme(theme === 'light' ? 'dark' : 'light');
     }
 
 
+
 return (
-  <ThemeContext.Provider value={theme}>
+  <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme} >
+    {props.children}
+    <GlobalStyles/>
     <CatchList>
     <Router>
-    <div className="App" style={theme}>
+    <div className="App">
       
       <Header/>
+
+      <Toggle theme={theme} toggleTheme={onClickHandler} />
       
-      <button style = {theme} onClick = {onClickHandler}>Change theme</button>
+      {/* <button style = {theme} onClick = {onClickHandler}>Change theme</button> */}
       
       <Route path="/pokemons">
 
-        <ContainerDiv style={theme}>
-          <Pokemons pokemons={pokemons} />
+        <ContainerDiv >
+          <Pokemons pokemons={pokemons} theme={theme}/>
         </ContainerDiv>
       </Route>
 
-      <Route path="/pokemon/:id" component={PokemonDetails}/>
+
+      {/* <Route path="/pokemon/:id">
+        <ContainerDiv style={theme}>
+          <PokemonDetails></PokemonDetails>
+        </ContainerDiv>
+      </Route> */}
+
+      <ContainerDiv>
+      <Route path="/pokemon/:id" 
+        render={(props) => (
+          <PokemonDetails {...props} theme={theme} />
+        )}/>
+      </ContainerDiv>
 
       {/* Not using this route to display any useful information. Only listing the types and without
       a good design idea or useful implementation it just looks messy */}
       {/* <Route path= "/types" component={TypeList} /> */}
 
-      <Route path="/catched" component={CatchedDiv}/>
+      {/* <Route path="/catched" component={CatchedDiv}/> */}
 
+      <Route path="/catched">
+        <ContainerDiv >
+          <CatchedDiv theme={theme}></CatchedDiv>
+        </ContainerDiv>
 
+      </Route>
   
       
     </div>
     </Router>
     </CatchList> 
-    </ThemeContext.Provider>
+    </ThemeProvider>
   );}
 
 

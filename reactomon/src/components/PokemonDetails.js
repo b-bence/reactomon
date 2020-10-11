@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import CatchPokemon from './CatchPokemon'
+import styled from 'styled-components'
+
+
 
 const PokemonDetails = props => {
 
+    const divStyle = {
+        background: `${props.theme === 'light'? 'white': 'black'}`
+    }
     const [details, setState] = useState([])
 
     useEffect (() => {
@@ -21,7 +27,7 @@ const PokemonDetails = props => {
     
     return (
 
-        <div className={currentClass} onClick={toggleClass}>
+        <div className={currentClass} onClick={toggleClass} style={divStyle}>
         <img width="200" height="200" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${details.id}.png`} alt="new"></img>
             <div className="text1">
                 <div className="text-content">
@@ -37,6 +43,10 @@ const PokemonDetails = props => {
         <svg className="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 35" width="30"><path d="M5 30L50 5l45 25" fill="none" stroke="#000" strokeWidth="5"/></svg>
         </div>  
     )
+
+    
 }
+
+
 
 export default PokemonDetails

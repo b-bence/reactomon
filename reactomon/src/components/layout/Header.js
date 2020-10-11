@@ -6,6 +6,7 @@ import Button from '../../elements/Button'
 import ThemeContext from '../ThemeContext'
 
 const HeaderElement = styled.header`
+transition: all 0.25s linear;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -19,6 +20,7 @@ const HeaderElement = styled.header`
 `
 
 const Div = styled.div`
+transition: all 0.25s linear;
     padding: 0;
     height: 25px;
     width: 220px;

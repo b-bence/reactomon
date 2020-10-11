@@ -33,7 +33,7 @@ const App = props => {
 
 
 return (
-  <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+  <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme} bb={'pink'}>
     <GlobalStyles/>
     <CatchList>
     <Router>
@@ -42,13 +42,12 @@ return (
       <Header/>
 
       <Toggle theme={theme} toggleTheme={onClickHandler} />
-      <h1>It's a {theme === 'light' ? 'light theme' : 'dark theme'}!</h1>
       
       {/* <button style = {theme} onClick = {onClickHandler}>Change theme</button> */}
       
       <Route path="/pokemons">
 
-        <ContainerDiv style={theme === 'light' ? lightTheme : darkTheme}>
+        <ContainerDiv >
           <Pokemons pokemons={pokemons} />
         </ContainerDiv>
       </Route>
@@ -61,7 +60,10 @@ return (
       </Route> */}
 
       <ContainerDiv>
-      <Route path="/pokemon/:id" component={PokemonDetails}/>
+      <Route path="/pokemon/:id" 
+        render={(props) => (
+          <PokemonDetails {...props} theme={theme} />
+        )}/>
       </ContainerDiv>
 
       {/* Not using this route to display any useful information. Only listing the types and without
@@ -71,7 +73,7 @@ return (
       {/* <Route path="/catched" component={CatchedDiv}/> */}
 
       <Route path="/catched">
-        <ContainerDiv style={theme === 'light' ? lightTheme : darkTheme}>
+        <ContainerDiv >
           <CatchedDiv></CatchedDiv>
         </ContainerDiv>
 

@@ -4,7 +4,7 @@ import CatchedPokemonItem from './CatchedPokemonItem'
 
 
 const Catched = props => {
-    const [pokemons, catchNewPokemon] = useContext(CatchContext)
+    const [pokemons] = useContext(CatchContext)
 
     let output = <div>No pokemons catched yet</div>
 

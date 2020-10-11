@@ -20,7 +20,7 @@ const CatchPokemon = (props) => {
                 setUnClickable(true)
             }
         }
-    })
+    },[pokemons, props.name])
 
     return (
         <div>

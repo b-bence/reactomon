@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import CatchPokemon from './CatchPokemon'
-import styled from 'styled-components'
 
 
 const PokemonDetails = props => {

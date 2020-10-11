@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
-import ThemeContext from './ThemeContext'
 import styled from 'styled-components'
 import CatchPokemon from './CatchPokemon'
-import { ThemeProvider } from 'styled-components';
 
 const PokemonCard = styled.div`
     height: 200px;
@@ -27,7 +25,6 @@ const cardStyle = {
 }
 
 const linkStyle={
-    color: "#dfe3e9",
     textDecoration: "none",
     fontWeight: "bolder",
     color: `${props.theme === 'light' ? '#222831': "#dfe3e9"}`
@@ -35,7 +32,6 @@ const linkStyle={
 
 
 useEffect (() => {
-
     console.log("Pokemon item Axios call")
     axios.get(props.pokemon.url)
     .then(res => setState(res.data.id))

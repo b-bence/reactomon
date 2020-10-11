@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Pokemons from './components/Pokemons'
 import PokemonDetails from './components/PokemonDetails'
 import axios from 'axios';
-import TypeList from './components/TypeList';
-import ThemeContext, {themes} from './components/ThemeContext'
 import ContainerDiv from './elements/ContainerDiv'
 import {CatchList} from './components/CatchContext'
 import CatchedDiv from './components/CatchedDiv'

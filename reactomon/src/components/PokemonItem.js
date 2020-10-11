@@ -8,8 +8,8 @@ import CatchPokemon from './CatchPokemon'
 
 const PokemonCard = styled.div`
     height: 200px;
-    width: 150px;
-    background-color: #4f8a8b;
+    width: 200px;
+    background-color: #4a576b;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -49,7 +49,7 @@ useEffect (() => {
         )
     }
 const linkStyle={
-    color: "#fbd46d",
+    color: "#dfe3e9 ",
     textDecoration: "none",
     fontWeight: "bolder",
 }

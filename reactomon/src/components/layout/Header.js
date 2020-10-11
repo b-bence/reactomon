@@ -6,17 +6,18 @@ import Button from '../../elements/Button'
 import ThemeContext from '../ThemeContext'
 
 const HeaderElement = styled.header`
-transition: all 0.25s linear;
+    transition: all 0.25s linear;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 220px;
+    height: 300px;
     background-image: url(${Background});
     background-repeat: no-repeat;
     background-position: center;
     color: #fff;
     text-align: center;
     padding: 10px;
+    background-size: 350px 200px;
 `
 
 const Div = styled.div`
@@ -35,7 +36,7 @@ transition: all 0.25s linear;
 `
 
 const NavLink = styled(Link)`
-    color: #ffcb02;
+    color: #fbd46d;
     font-weight: bold;
     text-decoration: none;
 `
@@ -45,20 +46,23 @@ const Header = () => {
         return (
             <HeaderElement style={theme}>
                 <Div>
-                    <Button>
-                    <NavLink to="/pokemons">Pokemons</NavLink>
+                    <Button style={buttonStyle}>
+                    <NavLink to="/pokemons">POKEMONS</NavLink>
                     </Button>
                     {/* <Button>
                     <NavLink to="/types">Types</NavLink>
                     </Button> */}
-                    <Button>
-                    <NavLink to="/catched">Catched</NavLink>
+                    <Button style={buttonStyle}>
+                    <NavLink to="/catched">CATCHED</NavLink>
                     </Button>
                 </Div>
             </HeaderElement>
         )
     }
 
+    const buttonStyle = {
+        backgroundColor: '#4056AC'
+    }
     
 
 export default Header

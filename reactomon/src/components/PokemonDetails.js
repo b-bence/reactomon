@@ -4,7 +4,6 @@ import CatchPokemon from './CatchPokemon'
 import styled from 'styled-components'
 
 
-
 const PokemonDetails = props => {
 
     const divStyle = {

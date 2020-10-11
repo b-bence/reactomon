@@ -9,7 +9,7 @@ const CatchPokemon = (props) => {
 
     const addPokemon = () => {
         
-        setUnClickable(true)   
+        setUnClickable(true)
         catchNewPokemon(prevPokemons => [...prevPokemons, {pokemonName: props.name}])
     }
 

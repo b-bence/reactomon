@@ -3,7 +3,7 @@ import PokemonItem from './PokemonItem'
 
 const Pokemons = props => {
             return props.pokemons.map((pokemon) =>(
-            <PokemonItem pokemon={pokemon}/>
+            <PokemonItem pokemon={pokemon} theme={props.theme}/>
             ));
     }
 

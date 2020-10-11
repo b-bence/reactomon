@@ -7,7 +7,8 @@ import styled from 'styled-components'
 const PokemonDetails = props => {
 
     const divStyle = {
-        background: `${props.theme === 'light'? 'white': 'black'}`
+        backgroundColor: `${props.theme === 'light' ? '#ffcb02': "#4a576b"}`,
+        color: `${props.theme === 'light' ? '#222831': "#dfe3e9"}`
     }
     const [details, setState] = useState([])
 

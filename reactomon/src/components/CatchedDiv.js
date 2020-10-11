@@ -3,7 +3,7 @@ import Catched from './Catched'
 import "./Catched.css"
 
 
-const CatchedDiv = () =>{
+const CatchedDiv = (props) =>{
 
     const [currentClass, changeClass] = useState('card')
 
@@ -12,8 +12,13 @@ const CatchedDiv = () =>{
         changeClass(currentClass === 'card' ? 'card expanded': 'card')
     }
 
+    const divStyle = {
+        backgroundColor: `${props.theme === 'light' ? '#ffcb02': "#4a576b"}`,
+        color: `${props.theme === 'light' ? '#222831': "#dfe3e9"}`
+    }
+
     return (
-            <div className={currentClass} onClick={toggleClass}>
+            <div className={currentClass} onClick={toggleClass} style={divStyle}>
                 <img width="200" height="200" src="https://i.pinimg.com/originals/50/e1/db/50e1db4684e6f697f93590950eb832f6.png" alt="new"></img>
                     <div className="text1">
                         <div className="text-content">

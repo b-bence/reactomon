@@ -1,12 +1,14 @@
 export const lightTheme = {
+    name: 'light',
     transition: "all 0.25s linear",
-    body: "#eeeeee",
+    body: "#fffbed",
     color: "black",
     backgroundColor: "#eeeeee"
     
   }
   
   export const darkTheme = {
+    name: 'dark',
     transition: "all 0.25s linear",
     color: "#ffcb02",
     backgroundColor: "#222831",

@@ -24,7 +24,7 @@ const App = props => {
     .then(res => setState(res.data.results))
   },[])
 
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   const onClickHandler = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -33,11 +33,12 @@ const App = props => {
 
 
 return (
-  <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme} bb={'pink'}>
+  <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme} >
+    {props.children}
     <GlobalStyles/>
     <CatchList>
     <Router>
-    <div className="App" style={theme === 'light' ? lightTheme : darkTheme}>
+    <div className="App">
       
       <Header/>
 
@@ -48,7 +49,7 @@ return (
       <Route path="/pokemons">
 
         <ContainerDiv >
-          <Pokemons pokemons={pokemons} />
+          <Pokemons pokemons={pokemons} theme={theme}/>
         </ContainerDiv>
       </Route>
 
@@ -74,7 +75,7 @@ return (
 
       <Route path="/catched">
         <ContainerDiv >
-          <CatchedDiv></CatchedDiv>
+          <CatchedDiv theme={theme}></CatchedDiv>
         </ContainerDiv>
 
       </Route>

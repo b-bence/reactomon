@@ -28,17 +28,9 @@ transition: all 0.25s linear;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    /* flex-direction: row;  */
-    /* position: absolute;
-    bottom: 0;
-    left: 45%; */
 `
 
 const NavLink = styled(Link)`
-    color: #fbd46d;
-    font-weight: bold;
-    text-decoration: none;
 `
 
 const Header = () => {
@@ -46,22 +38,29 @@ const Header = () => {
         return (
             <HeaderElement style={theme}>
                 <Div>
-                    <Button style={buttonStyle}>
-                    <NavLink to="/pokemons">POKEMONS</NavLink>
-                    </Button>
+                    
+                    <NavLink to="/pokemons">
+                    <Button style={buttonStyle}>POKEMONS</Button>
+                    </NavLink>
+                    
                     {/* <Button>
                     <NavLink to="/types">Types</NavLink>
                     </Button> */}
-                    <Button style={buttonStyle}>
-                    <NavLink to="/catched">CATCHED</NavLink>
-                    </Button>
+
+                    <NavLink to="/catched">
+                    <Button style={buttonStyle}>CATCHED</Button>
+                    </NavLink>
+                    
                 </Div>
             </HeaderElement>
         )
     }
 
     const buttonStyle = {
-        backgroundColor: '#4056AC'
+        backgroundColor: '#4056AC',
+        color: "#fbd46d",
+        fontWeight: "bold",
+        cursor: 'pointer'
     }
     
 

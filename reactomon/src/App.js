@@ -10,6 +10,10 @@ import ContainerDiv from './elements/ContainerDiv'
 import {CatchList} from './components/CatchContext'
 import CatchedDiv from './components/CatchedDiv'
 import './App.css'
+import { lightTheme, darkTheme } from './components/Theme';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './components/Global';
+import Toggle from './components/Toggle'
 
 const App = props => {
   const [pokemons, setState]= useState([])
@@ -20,27 +24,32 @@ const App = props => {
     .then(res => setState(res.data.results))
   },[])
 
-  const [theme, setTheme] = useState(themes.light);
+  const [theme, setTheme] = useState('dark');
 
   const onClickHandler = () => {
-    setTheme( theme === themes.light? themes.dark: themes.light);
+    setTheme(theme === 'light' ? 'dark' : 'light');
     }
 
 
+
 return (
-  <ThemeContext.Provider value={theme}>
+  <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme} >
+    {props.children}
+    <GlobalStyles/>
     <CatchList>
     <Router>
-    <div className="App" style={theme}>
+    <div className="App">
       
       <Header/>
+
+      <Toggle theme={theme} toggleTheme={onClickHandler} />
       
-      <button style = {theme} onClick = {onClickHandler}>Change theme</button>
+      {/* <button style = {theme} onClick = {onClickHandler}>Change theme</button> */}
       
       <Route path="/pokemons">
 
-        <ContainerDiv style={theme}>
-          <Pokemons pokemons={pokemons} />
+        <ContainerDiv >
+          <Pokemons pokemons={pokemons} theme={theme}/>
         </ContainerDiv>
       </Route>
 
@@ -52,7 +61,10 @@ return (
       </Route> */}
 
       <ContainerDiv>
-      <Route path="/pokemon/:id" component={PokemonDetails}/>
+      <Route path="/pokemon/:id" 
+        render={(props) => (
+          <PokemonDetails {...props} theme={theme} />
+        )}/>
       </ContainerDiv>
 
       {/* Not using this route to display any useful information. Only listing the types and without
@@ -62,8 +74,8 @@ return (
       {/* <Route path="/catched" component={CatchedDiv}/> */}
 
       <Route path="/catched">
-        <ContainerDiv style={theme}>
-          <CatchedDiv></CatchedDiv>
+        <ContainerDiv >
+          <CatchedDiv theme={theme}></CatchedDiv>
         </ContainerDiv>
 
       </Route>
@@ -72,7 +84,7 @@ return (
     </div>
     </Router>
     </CatchList> 
-    </ThemeContext.Provider>
+    </ThemeProvider>
   );}
 
 

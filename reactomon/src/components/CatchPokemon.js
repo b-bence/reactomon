@@ -1,5 +1,6 @@
 import React, {useState, useContext, useEffect} from 'react'
 import {CatchContext} from './CatchContext'
+import Button from './../elements/Button'
 
 const CatchPokemon = (props) => {
     const [pokemons, catchNewPokemon] = useContext(CatchContext)
@@ -8,7 +9,7 @@ const CatchPokemon = (props) => {
 
     const addPokemon = () => {
         
-        setUnClickable(true)   
+        setUnClickable(true)
         catchNewPokemon(prevPokemons => [...prevPokemons, {pokemonName: props.name}])
     }
 
@@ -23,15 +24,21 @@ const CatchPokemon = (props) => {
 
     return (
         <div>
-        <button disabled={clickable} style={catchButtonStyle} onClick={addPokemon}>Catch!</button>
+        <Button disabled={clickable} style={catchButtonStyle} onClick={addPokemon}>CATCH</Button>
         </div>
     )
 }
 
 const catchButtonStyle = {
-    borderRadius: '5px',
-    backgroundColor: "#eeeeee",
-    fontWeight: "bolder"
+    fontWeight: "bold"
+    // height: '25px',
+    // borderRadius: '5px',
+    // backgroundColor: "#fbd46d",
+    // fontWeight: "bolder",
+    // fontFamily: 'Josefin Sans',
+    // borderColor: 'velvet',
+    // borderStyle: 'solid',
+    // padding: '5px'
 }
 
 

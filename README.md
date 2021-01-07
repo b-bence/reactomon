@@ -3,5 +3,5 @@ Reactomon is my first React app that uses
 - Context API
 - Theme toggle
 
-It is available Available on Netlify: https://reactomon-b-bence.netlify.app
+It is available on Netlify: https://reactomon-b-bence.netlify.app
 
